@@ -2,28 +2,63 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Cognifyz Internship - Home</title>
+  <title>Cognifyz Internship — Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="/public/css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Cognifyz Internship Demo</h1>
-    <nav><a href="/form">Open Form</a> | <a href="/api/entries" target="_blank">API: /api/entries</a></nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">Cognifyz Internship Demo</h1>
+      <nav class="nav">
+        <a href="/form" class="btn">Open Form</a>
+        <a href="/api/entries" target="_blank" class="link">API</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>Submissions (in-memory)</h2>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Full-stack internship project</h2>
+          <p>Node · Express · EJS · Validation · Responsive UI — tasks built step-by-step.</p>
+          <a href="/form" class="cta">Submit a Demo</a>
+        </div>
+        <div class="hero-visual">
+          <div class="card">
+            <h3>Live demo</h3>
+            <p>Open the form and test validation & API endpoints.</p>
+            <a href="/form" class="btn small">Go to form</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features container">
+      <h3>Submissions (in-memory)</h3>
       <% if (submissions.length === 0) { %>
-        <p>No submissions yet. Go to <a href="/form">Form</a>.</p>
+        <p>No submissions yet. Try the <a href="/form">form</a>.</p>
       <% } else { %>
-        <ul>
+        <ul class="submissions-list">
           <% submissions.forEach(s => { %>
-            <li><strong><%= s.name %></strong> — <%= s.email %> — <%= s.createdAt %></li>
+            <li class="submission">
+              <div>
+                <strong><%= s.name %></strong>
+                <div class="meta"><%= s.email %> • <%= new Date(s.createdAt).toLocaleString() %></div>
+              </div>
+              <div class="message"><%= s.message || '' %></div>
+            </li>
           <% }) %>
         </ul>
       <% } %>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>Made for Cognifyz Internship • Branch: task-3-css</small>
+    </div>
+  </footer>
 </body>
 </html>
