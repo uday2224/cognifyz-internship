@@ -44,6 +44,7 @@
             <div>
               <label for="password">Password</label>
               <input id="password" type="password" name="password" required />
+              <div id="pwd-strength" class="pwd-strength"></div>
               <div class="error"><%= errors.password ? errors.password : '' %></div>
             </div>
             <div>
@@ -72,6 +73,7 @@
     </div>
   </footer>
 
+  <script src="/public/js/router.js"></script>
   <script src="/public/js/form.js"></script>
 </body>
 </html>

@@ -51,3 +51,11 @@ textarea{min-height:110px}
   .two-col{grid-template-columns:1fr}
   .header-inner{flex-direction:column; gap:8px; align-items:flex-start}
 }
+
+/* Toast styles (Task 4) */
+#toast-container{position:fixed; right:18px; bottom:18px; z-index:9999; display:flex; flex-direction:column; gap:8px; align-items:flex-end}
+.toast{background:#111;color:#fff;padding:10px 14px;border-radius:8px;opacity:0;transform:translateY(8px);transition:all .28s ease;max-width:320px;box-shadow:0 8px 24px rgba(8,12,32,0.16)}
+.toast.visible{opacity:1;transform:translateY(0)}
+.toast-success{background:#059669}
+.toast-error{background:#ef4444}
+.toast-info{background:#374151}
