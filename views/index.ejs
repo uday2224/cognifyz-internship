@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cognifyz Internship - Home</title>
+  <link rel="stylesheet" href="/public/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Cognifyz Internship Demo</h1>
+    <nav><a href="/form">Open Form</a> | <a href="/api/entries" target="_blank">API: /api/entries</a></nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Submissions (in-memory)</h2>
+      <% if (submissions.length === 0) { %>
+        <p>No submissions yet. Go to <a href="/form">Form</a>.</p>
+      <% } else { %>
+        <ul>
+          <% submissions.forEach(s => { %>
+            <li><strong><%= s.name %></strong> — <%= s.email %> — <%= s.createdAt %></li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>
