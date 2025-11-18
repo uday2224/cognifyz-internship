@@ -9,56 +9,48 @@
   <main class="container">
     <h1>Submit your details</h1>
 
-    <% if (errors && errors.length) { %>
-    <div class="errors">
-      <ul>
-        <% errors.forEach(err => { %><li><%= err %></li><% }) %>
-      </ul>
-    </div>
-    <% } %>
-
     <form action="/submit" method="POST" id="demoForm" novalidate>
-      <label>
-        Name
-        <input type="text" name="name" value="<%= values.name || '' %>" required />
-      </label>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" value="<%= values.name || '' %>" required />
+        <div class="error"><%= errors.name ? errors.name : '' %></div>
+      </div>
 
-      <label>
-        Email
-        <input type="email" name="email" value="<%= values.email || '' %>" required />
-      </label>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" value="<%= values.email || '' %>" required />
+        <div class="error"><%= errors.email ? errors.email : '' %></div>
+      </div>
 
-      <label>
-        Message
-        <textarea name="message"><%= values.message || '' %></textarea>
-      </label>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message"><%= values.message || '' %></textarea>
+        <div class="error"><%= errors.message ? errors.message : '' %></div>
+      </div>
 
-      <label>
-        Password
-        <input type="password" name="password" required />
-      </label>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required />
+        <div id="pwd-strength" class="pwd-strength"></div>
+        <div class="error"><%= errors.password ? errors.password : '' %></div>
+      </div>
 
-      <label>
-        Confirm Password
-        <input type="password" name="confirmPassword" required />
-      </label>
+      <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" name="confirmPassword" required />
+        <div class="error"><%= errors.confirmPassword ? errors.confirmPassword : '' %></div>
+      </div>
 
-      <button type="submit">Submit</button>
+      <div class="field">
+        <div class="error"><%= errors.passwordStrength ? errors.passwordStrength : '' %></div>
+      </div>
+
+      <button id="submitBtn" type="submit">Submit</button>
     </form>
 
     <p><a href="/">Back to Home</a></p>
   </main>
 
-  <script>
-    // small client-side validation (enhancement)
-    document.getElementById('demoForm').addEventListener('submit', function (e) {
-      const pwd = this.password.value;
-      const cpwd = this.confirmPassword.value;
-      if (pwd !== cpwd) {
-        e.preventDefault();
-        alert('Passwords do not match.');
-      }
-    });
-  </script>
+  <script src="/public/js/form.js"></script>
 </body>
 </html>
