@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Dashboard — Cognifyz Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/public/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">Cognifyz Dashboard</h1>
+      <nav class="nav">
+        <a href="/" class="link">Home</a>
+        <a href="/form" class="link">Form</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="form-card">
+      <h2>Entries Dashboard</h2>
+
+      <div id="dashboard-controls">
+        <button id="refreshBtn" class="btn">Refresh</button>
+        <button id="newBtn" class="btn">Create New</button>
+      </div>
+
+      <div id="newFormContainer" style="display:none; margin-top:12px;">
+        <h3>Create / Edit Entry</h3>
+        <form id="apiForm">
+          <input type="hidden" id="entryId" value="" />
+          <div class="field">
+            <label for="apiName">Name</label>
+            <input id="apiName" type="text" />
+          </div>
+          <div class="field">
+            <label for="apiEmail">Email</label>
+            <input id="apiEmail" type="email" />
+          </div>
+          <div class="field">
+            <label for="apiMessage">Message</label>
+            <textarea id="apiMessage"></textarea>
+          </div>
+          <div class="form-actions">
+            <button id="saveBtn" type="submit" class="btn">Save</button>
+            <button id="cancelBtn" type="button" class="link">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="entriesList" style="margin-top:18px;">
+        <p>Loading entries…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>Dashboard — Task 5</small>
+    </div>
+  </footer>
+
+  <script src="/public/js/dashboard.js"></script>
+</body>
+</html>
