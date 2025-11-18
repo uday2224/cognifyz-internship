@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Form - Cognifyz Demo</title>
+  <link rel="stylesheet" href="/public/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Submit your details</h1>
+
+    <% if (errors && errors.length) { %>
+    <div class="errors">
+      <ul>
+        <% errors.forEach(err => { %><li><%= err %></li><% }) %>
+      </ul>
+    </div>
+    <% } %>
+
+    <form action="/submit" method="POST" id="demoForm" novalidate>
+      <label>
+        Name
+        <input type="text" name="name" value="<%= values.name || '' %>" required />
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" value="<%= values.email || '' %>" required />
+      </label>
+
+      <label>
+        Message
+        <textarea name="message"><%= values.message || '' %></textarea>
+      </label>
+
+      <label>
+        Password
+        <input type="password" name="password" required />
+      </label>
+
+      <label>
+        Confirm Password
+        <input type="password" name="confirmPassword" required />
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p><a href="/">Back to Home</a></p>
+  </main>
+
+  <script>
+    // small client-side validation (enhancement)
+    document.getElementById('demoForm').addEventListener('submit', function (e) {
+      const pwd = this.password.value;
+      const cpwd = this.confirmPassword.value;
+      if (pwd !== cpwd) {
+        e.preventDefault();
+        alert('Passwords do not match.');
+      }
+    });
+  </script>
+</body>
+</html>
