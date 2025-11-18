@@ -2,54 +2,75 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Form - Cognifyz Demo</title>
+  <title>Form — Cognifyz Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="/public/css/style.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>Submit your details</h1>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">Cognifyz Internship Demo</h1>
+      <nav class="nav">
+        <a href="/" class="link">Home</a>
+        <a href="/api/entries" target="_blank" class="link">API</a>
+      </nav>
+    </div>
+  </header>
 
-    <form action="/submit" method="POST" id="demoForm" novalidate>
-      <div class="field">
-        <label for="name">Name</label>
-        <input id="name" type="text" name="name" value="<%= values.name || '' %>" required />
-        <div class="error"><%= errors.name ? errors.name : '' %></div>
+  <main>
+    <section class="container form-section">
+      <div class="form-card">
+        <h2>Submit your details</h2>
+        <form action="/submit" method="POST" id="demoForm" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" value="<%= values.name || '' %>" required />
+            <div class="error"><%= errors.name ? errors.name : '' %></div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" value="<%= values.email || '' %>" required />
+            <div class="error"><%= errors.email ? errors.email : '' %></div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"><%= values.message || '' %></textarea>
+            <div class="error"><%= errors.message ? errors.message : '' %></div>
+          </div>
+
+          <div class="field two-col">
+            <div>
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password" required />
+              <div class="error"><%= errors.password ? errors.password : '' %></div>
+            </div>
+            <div>
+              <label for="confirmPassword">Confirm Password</label>
+              <input id="confirmPassword" type="password" name="confirmPassword" required />
+              <div class="error"><%= errors.confirmPassword ? errors.confirmPassword : '' %></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="error"><%= errors.passwordStrength ? errors.passwordStrength : '' %></div>
+          </div>
+
+          <div class="form-actions">
+            <button id="submitBtn" type="submit" class="btn">Submit</button>
+            <a href="/" class="link">Cancel</a>
+          </div>
+        </form>
       </div>
-
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" value="<%= values.email || '' %>" required />
-        <div class="error"><%= errors.email ? errors.email : '' %></div>
-      </div>
-
-      <div class="field">
-        <label for="message">Message</label>
-        <textarea id="message" name="message"><%= values.message || '' %></textarea>
-        <div class="error"><%= errors.message ? errors.message : '' %></div>
-      </div>
-
-      <div class="field">
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password" required />
-        <div id="pwd-strength" class="pwd-strength"></div>
-        <div class="error"><%= errors.password ? errors.password : '' %></div>
-      </div>
-
-      <div class="field">
-        <label for="confirmPassword">Confirm Password</label>
-        <input id="confirmPassword" type="password" name="confirmPassword" required />
-        <div class="error"><%= errors.confirmPassword ? errors.confirmPassword : '' %></div>
-      </div>
-
-      <div class="field">
-        <div class="error"><%= errors.passwordStrength ? errors.passwordStrength : '' %></div>
-      </div>
-
-      <button id="submitBtn" type="submit">Submit</button>
-    </form>
-
-    <p><a href="/">Back to Home</a></p>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>Made for Cognifyz Internship</small>
+    </div>
+  </footer>
 
   <script src="/public/js/form.js"></script>
 </body>
